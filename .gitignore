@@ -5,12 +5,34 @@ obj/
 *.suo
 *.userosscache
 *.sln.docstates
+*.rsuser
 .idea/
 *.DotSettings.user
+
+# Byggda binärer — lägg upp installern på GitHub Releases, inte i git
 publish/
 dist/
+artifacts/
+TestResults/
+*.nupkg
+*.exe
+*.dll
+*.pdb
+*.msi
+*.zip
+
+# Hemligheter. Public PEM ska upp på GitHub; private PEM får aldrig checkas in.
+*.pfx
+*.snk
+*private*.pem
 tools/license-private.pem
+!tools/license-public.pem
 .env
 .env.*
-*.nupkg
-TestResults/
+*.key
+
+# App-inställningar med krypterad API-nyckel / licens (ligger normalt i AppData)
+ui.json
+
+Thumbs.db
+Desktop.ini

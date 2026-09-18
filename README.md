@@ -91,6 +91,25 @@ installer/                 Inno Setup
 | `Ctrl+Shift+P` | Exportera PDF |
 | `Ctrl+,` | Inställningar |
 
+## Vad som får upp på GitHub
+
+**Publicera (källkod + sajt)**
+
+- `src/`, `tests/`, `installer/`, `scripts/`, `docs/`
+- `tools/CodeBrief.LicenseGen` (själva programmet) och `tools/license-public.pem`
+- `README.md`, `LICENSE`, `.gitignore`, `CodeBrief.slnx`, `Directory.Build.props`
+
+**Publicera inte (stanna på den här datorn)**
+
+- `C:\Users\khali\OneDrive\Skrivbord\New folder\tools\license-private.pem` — utan den kan vem som helst skriva giltiga `CB1.`-nycklar
+- `CB1.`-nycklar du ger ut till kunder (skriv inte in dem i README, issues eller commits)
+- OpenAI-/Anthropic-nycklar och `.env`
+- `C:\Users\khali\AppData\Roaming\CodeBrief\ui.json` — fönsterläge, krypterad API-nyckel, licens, trial
+- `dist\` (installer `.exe`) och `publish\` (self-contained `.exe`) — släpp installern som GitHub Release i stället
+- `bin\`, `obj\`, `.vs\`
+
+`.gitignore` täcker det mesta. `license-public.pem` är medvetet *inte* ignorerad.
+
 ## Website / GitHub Pages
 
 Marknadssajten ligger i `docs/` (statisk HTML, ingen backend).
