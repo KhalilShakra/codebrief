@@ -1,0 +1,24 @@
+<Window x:Class="CodeBrief.Desktop.LicenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Licens — CodeBrief"
+        Height="360"
+        Width="560"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BgBrush}"
+        FontFamily="Segoe UI"
+        TextElement.Foreground="{StaticResource TextBrush}"
+        ResizeMode="NoResize">
+    <DockPanel Margin="20">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Stäng" Style="{StaticResource GhostButton}" IsCancel="True" Click="OnClose"/>
+            <Button Content="Aktivera" Style="{StaticResource PrimaryButton}" Margin="8,0,0,0" Click="OnActivate"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Licens" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <TextBlock x:Name="StatusText" Style="{StaticResource BodyText}" Margin="0,0,0,16" TextWrapping="Wrap"/>
+            <TextBlock Text="Klistra in din CodeBrief-nyckel (börjar med CB1.)" Margin="0,0,0,6"/>
+            <TextBox x:Name="KeyBox" Height="90" TextWrapping="Wrap" AcceptsReturn="True" Padding="8" VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

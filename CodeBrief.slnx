@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CodeBrief.Contracts/CodeBrief.Contracts.csproj" />
+    <Project Path="src/CodeBrief.Core/CodeBrief.Core.csproj" />
+    <Project Path="src/CodeBrief.Desktop/CodeBrief.Desktop.csproj" />
+    <Project Path="src/CodeBrief.Licensing/CodeBrief.Licensing.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CodeBrief.Tests/CodeBrief.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/CodeBrief.LicenseGen/CodeBrief.LicenseGen.csproj" />
+  </Folder>
+</Solution>

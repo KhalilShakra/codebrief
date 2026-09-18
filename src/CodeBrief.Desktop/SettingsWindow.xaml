@@ -1,0 +1,38 @@
+<Window x:Class="CodeBrief.Desktop.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Inställningar — CodeBrief"
+        Height="460"
+        Width="520"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BgBrush}"
+        FontFamily="Segoe UI"
+        TextElement.Foreground="{StaticResource TextBrush}"
+        ResizeMode="NoResize">
+    <DockPanel Margin="20">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Avbryt" Style="{StaticResource GhostButton}" IsCancel="True" Margin="0,0,8,0" Click="OnCancel"/>
+            <Button Content="Spara" Style="{StaticResource PrimaryButton}" IsDefault="True" Click="OnSave"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="Analysmotor" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+            <TextBlock Text="Utan API-nyckel används alltid den lokala motorn. Nyckeln lagras krypterad för ditt Windows-konto." Style="{StaticResource BodyText}" Margin="0,0,0,16"/>
+
+            <TextBlock Text="Provider" Margin="0,0,0,6"/>
+            <ComboBox x:Name="ProviderBox" Margin="0,0,0,14">
+                <ComboBoxItem Content="Lokal heuristik" Tag="Local"/>
+                <ComboBoxItem Content="OpenAI" Tag="OpenAI"/>
+                <ComboBoxItem Content="Anthropic" Tag="Anthropic"/>
+            </ComboBox>
+
+            <TextBlock Text="API-nyckel" Margin="0,0,0,6"/>
+            <PasswordBox x:Name="ApiKeyBox" Height="34" Margin="0,0,0,14" Padding="8,6"/>
+
+            <TextBlock Text="OpenAI-modell" Margin="0,0,0,6"/>
+            <TextBox x:Name="OpenAiModelBox" Height="34" Margin="0,0,0,14" Padding="8,6"/>
+
+            <TextBlock Text="Anthropic-modell" Margin="0,0,0,6"/>
+            <TextBox x:Name="AnthropicModelBox" Height="34" Padding="8,6"/>
+        </StackPanel>
+    </DockPanel>
+</Window>
