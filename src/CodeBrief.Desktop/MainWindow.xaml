@@ -11,7 +11,7 @@
         MinHeight="640"
         MinWidth="960"
         Background="{StaticResource BgBrush}"
-        FontFamily="Segoe UI"
+        FontFamily="{StaticResource UiFont}"
         TextElement.Foreground="{StaticResource TextBrush}"
         RenderOptions.BitmapScalingMode="HighQuality"
         AllowDrop="True"
@@ -31,42 +31,41 @@
     <DockPanel>
         <Border DockPanel.Dock="Top" Height="3" Background="{StaticResource AccentBrush}"/>
 
-        <Border DockPanel.Dock="Top" Padding="16,12" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,0,0,1">
+        <Border DockPanel.Dock="Top" Padding="16,10" Background="{StaticResource HeaderBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,0,0,1">
             <DockPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Image Source="pack://application:,,,/Assets/logo.png"
-                           Width="36" Height="36" Margin="0,0,12,0"
+                           Width="32" Height="32" Margin="0,0,12,0"
                            RenderOptions.BitmapScalingMode="HighQuality"
                            SnapsToDevicePixels="True"/>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="CodeBrief" FontSize="18" FontWeight="SemiBold"/>
-                        <TextBlock Text="Kodanalys och pedagogiska rapporter" Foreground="{StaticResource MutedBrush}" FontSize="12"/>
+                        <TextBlock Text="CodeBrief" FontSize="15" FontWeight="SemiBold"/>
+                        <TextBlock Text="Kodanalys och pedagogiska rapporter" Foreground="{StaticResource MutedBrush}" FontSize="11"/>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Button Content="Licens" Style="{StaticResource GhostButton}" Command="{Binding OpenLicenseCommand}" ToolTip="Aktivera licensnyckel" Margin="0,0,8,0"/>
-                    <Button Content="Inställningar" Style="{StaticResource GhostButton}" Command="{Binding OpenSettingsCommand}" ToolTip="API-nyckel och analysmotor (Ctrl+,)" Margin="0,0,8,0"/>
-                    <Button Content="Öppna" Style="{StaticResource GhostButton}" Command="{Binding OpenFileCommand}" ToolTip="Öppna fil (Ctrl+O)" Margin="0,0,8,0"/>
-                    <Button Content="Rensa" Style="{StaticResource GhostButton}" Command="{Binding ClearCommand}" ToolTip="Rensa arbetsytan (Ctrl+N)" Margin="0,0,8,0"/>
-                    <Button Content="Markdown" Style="{StaticResource GhostButton}" Command="{Binding ExportReportCommand}" ToolTip="Spara rapport som .md (Ctrl+S)" Margin="0,0,8,0"/>
-                    <Button Content="PDF" Style="{StaticResource GhostButton}" Command="{Binding ExportPdfCommand}" ToolTip="Spara rapport som PDF (Ctrl+Shift+P)" Margin="0,0,8,0"/>
-                    <Button Content="Analysera" Style="{StaticResource PrimaryButton}" Command="{Binding AnalyzeCommand}" ToolTip="Kör analys (Ctrl+Enter)"/>
+                    <Button Content="Licens" Style="{StaticResource GhostButton}" Command="{Binding OpenLicenseCommand}" ToolTip="Aktivera licensnyckel"/>
+                    <Button Content="Inställningar" Style="{StaticResource GhostButton}" Command="{Binding OpenSettingsCommand}" ToolTip="API-nyckel och analysmotor (Ctrl+,)" Margin="8,0,0,0"/>
+                    <Rectangle Style="{StaticResource ToolbarSeparator}"/>
+                    <Button Content="Öppna" Style="{StaticResource GhostButton}" Command="{Binding OpenFileCommand}" ToolTip="Öppna fil (Ctrl+O)"/>
+                    <Button Content="Rensa" Style="{StaticResource GhostButton}" Command="{Binding ClearCommand}" ToolTip="Rensa arbetsytan (Ctrl+N)" Margin="8,0,0,0"/>
+                    <Rectangle Style="{StaticResource ToolbarSeparator}"/>
+                    <Button Content="Markdown" Style="{StaticResource GhostButton}" Command="{Binding ExportReportCommand}" ToolTip="Spara rapport som .md (Ctrl+S)"/>
+                    <Button Content="PDF" Style="{StaticResource GhostButton}" Command="{Binding ExportPdfCommand}" ToolTip="Spara rapport som PDF (Ctrl+Shift+P)" Margin="8,0,0,0"/>
+                    <Button Content="Analysera" Style="{StaticResource PrimaryButton}" Command="{Binding AnalyzeCommand}" ToolTip="Kör analys (Ctrl+Enter)" Margin="8,0,0,0" Padding="16,6"/>
                 </StackPanel>
             </DockPanel>
         </Border>
 
-        <Border DockPanel.Dock="Bottom" Padding="16,8" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,1,0,0">
+        <Border DockPanel.Dock="Bottom" Padding="16,8" Background="{StaticResource HeaderBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,1,0,0">
             <DockPanel>
-                <TextBlock Text="{Binding Status}" Foreground="{StaticResource MutedBrush}" FontSize="12" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Status}" Foreground="{StaticResource MutedBrush}" FontSize="11" FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center"/>
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding LicenseStatus}" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,0,14,0"/>
-                    <TextBlock Text="{Binding VersionLabel}" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,0,14,0"/>
-                    <TextBlock Text="{Binding FileName}" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,0,14,0"/>
-                    <ProgressBar Width="110" Height="5" IsIndeterminate="True"
-                                 Foreground="{StaticResource AccentBrush}"
-                                 Background="{StaticResource BorderBrushKey}"
-                                 BorderThickness="0"
+                    <TextBlock Text="{Binding LicenseStatus}" Foreground="{StaticResource MutedBrush}" FontSize="11" FontFamily="{StaticResource MonoFont}" Margin="0,0,16,0"/>
+                    <TextBlock Text="{Binding VersionLabel}" Foreground="{StaticResource MutedBrush}" FontSize="11" FontFamily="{StaticResource MonoFont}" Margin="0,0,16,0"/>
+                    <TextBlock Text="{Binding FileName}" Foreground="{StaticResource MutedBrush}" FontSize="11" FontFamily="{StaticResource MonoFont}" Margin="0,0,16,0"/>
+                    <ProgressBar Width="96" Height="4" IsIndeterminate="True"
                                  Visibility="{Binding IsBusy, Converter={StaticResource BoolToVis}}"/>
                 </StackPanel>
             </DockPanel>
@@ -75,28 +74,28 @@
         <Grid Margin="16">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.15*"/>
-                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="0.85*"/>
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="1" CornerRadius="8">
                 <DockPanel>
-                    <Border DockPanel.Dock="Top" Padding="14,10" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,0,0,1">
+                    <Border DockPanel.Dock="Top" Padding="14,8" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,0,0,1" Background="{StaticResource HeaderBrush}">
                         <DockPanel>
-                            <TextBlock Text="Källkod" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                            <TextBlock Text="Källkod" FontWeight="SemiBold" FontSize="12" VerticalAlignment="Center"/>
                             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Foreground="{StaticResource MutedBrush}" FontSize="12" VerticalAlignment="Center" Margin="0,0,12,0">
+                                <TextBlock Foreground="{StaticResource MutedBrush}" FontSize="11" FontFamily="{StaticResource MonoFont}" VerticalAlignment="Center" Margin="0,0,12,0">
                                     <Run Text="{Binding LineCount, Mode=OneWay}"/>
                                     <Run Text=" rader"/>
                                     <Run Text=" · "/>
                                     <Run Text="{Binding CharacterCount, Mode=OneWay}"/>
                                     <Run Text=" tecken"/>
                                 </TextBlock>
-                                <Border Background="#243044" CornerRadius="12" Padding="10,4">
+                                <Border Style="{StaticResource ChipBorder}">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Language.Name}" Foreground="{StaticResource TextBrush}" FontSize="12"/>
+                                        <TextBlock Text="{Binding Language.Name}" Foreground="{StaticResource TextBrush}" FontSize="11"/>
                                         <TextBlock Text="{Binding Language.Confidence, Converter={StaticResource ConfidencePercent}}"
-                                                   Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="8,0,0,0"/>
+                                                   Foreground="{StaticResource MutedBrush}" FontSize="11" Margin="8,0,0,0"/>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -107,8 +106,8 @@
                              FontSize="13.5"
                              ShowLineNumbers="True"
                              WordWrap="False"
-                             Background="#0B0E13"
-                             Foreground="#E6EDF3"
+                             Background="{StaticResource EditorBrush}"
+                             Foreground="{StaticResource CodeBrush}"
                              HorizontalScrollBarVisibility="Auto"
                              VerticalScrollBarVisibility="Auto"
                              local:AvalonEditBinder.BoundText="{Binding SourceCode, UpdateSourceTrigger=PropertyChanged}"
@@ -116,30 +115,37 @@
                 </DockPanel>
             </Border>
 
-            <GridSplitter Grid.Column="1" Width="10" HorizontalAlignment="Stretch" Background="Transparent"/>
+            <GridSplitter Grid.Column="1" Width="8" HorizontalAlignment="Stretch" Background="Transparent"/>
 
             <Border Grid.Column="2" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="1" CornerRadius="8">
                 <Grid>
                     <DockPanel Visibility="{Binding Report, Converter={StaticResource NullToVis}}">
-                        <DockPanel DockPanel.Dock="Top" Margin="14,12,14,8">
-                            <TextBlock Text="Rapport" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                            <Button DockPanel.Dock="Right" HorizontalAlignment="Right"
-                                    Content="Kopiera rättning"
-                                    Style="{StaticResource GhostButton}"
-                                    Padding="10,5"
-                                    Command="{Binding DataContext.CopyFixCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                                    ToolTip="Kopiera den rättade koden"/>
-                        </DockPanel>
+                        <Border DockPanel.Dock="Top" Padding="14,8" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="0,0,0,1" Background="{StaticResource HeaderBrush}">
+                            <DockPanel>
+                                <TextBlock Text="Rapport" FontWeight="SemiBold" FontSize="12" VerticalAlignment="Center"/>
+                                <Button DockPanel.Dock="Right" HorizontalAlignment="Right"
+                                        Content="Kopiera rättning"
+                                        Style="{StaticResource GhostButton}"
+                                        Padding="10,5"
+                                        Command="{Binding DataContext.CopyFixCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        ToolTip="Kopiera den rättade koden"/>
+                            </DockPanel>
+                        </Border>
                         <views:ReportView DataContext="{Binding Report}"/>
                     </DockPanel>
 
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300"
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="280"
                                 Visibility="{Binding Report, Converter={StaticResource NullToVisInvert}}">
-                        <Image Source="pack://application:,,,/Assets/logo.png" Width="64" Height="64" HorizontalAlignment="Center" Margin="0,0,0,14"
-                               RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.95"/>
-                        <TextBlock Text="Ingen rapport ännu" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                        <Image Source="pack://application:,,,/Assets/logo.png" Width="48" Height="48" HorizontalAlignment="Center" Margin="0,0,0,16"
+                               RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.9"/>
+                        <TextBlock Text="Ingen rapport ännu" FontSize="15" FontWeight="SemiBold" HorizontalAlignment="Center"/>
                         <TextBlock Text="Klistra in kod, släpp en fil, eller tryck Ctrl+Enter. Språket detekteras direkt."
-                                   Style="{StaticResource BodyText}" TextAlignment="Center" Margin="0,8,0,0"/>
+                                   Style="{StaticResource BodyText}" TextAlignment="Center" Margin="0,8,0,16"/>
+                        <TextBlock HorizontalAlignment="Center" FontFamily="{StaticResource MonoFont}" FontSize="11" Foreground="{StaticResource MutedBrush}">
+                            <Run Text="Ctrl"/>
+                            <Run Text=" + "/>
+                            <Run Text="Enter"/>
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
             </Border>

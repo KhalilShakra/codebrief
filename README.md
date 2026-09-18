@@ -74,6 +74,20 @@ installer/                 Inno Setup
 | `Ctrl+Shift+P` | Exportera PDF |
 | `Ctrl+,` | Inställningar |
 
+## Website / GitHub Pages
+
+Marknadssajten ligger i `docs/` (statisk HTML, ingen backend).
+
+1. Skapa ett GitHub-repo och pusha `main` (det finns inget remote i den här kopian ännu).
+2. På GitHub: **Settings → Pages**.
+3. Source: **Deploy from a branch**.
+4. Branch `main`, folder **`/docs`**. Save.
+5. Sajten publiceras på `https://<användarnamn>.github.io/<repo>/`.
+
+Ladda ner-knappen pekar mot GitHub Releases. När du har en installer, skapa en release och lägg upp `dist/CodeBrief-Setup-1.0.0.exe`.
+
+**Egen domän:** köp den själv (Loopia, Namecheap, …). Lägg inte in en påhittad adress. Steg för DNS (CNAME `www` → `<användarnamn>.github.io`, eller A-poster för apex) och GitHub “Custom domain” + HTTPS finns i [docs/DOMAIN.md](docs/DOMAIN.md). Ingen `CNAME`-fil ska ligga i `docs/` förrän du faktiskt har en domän.
+
 ## Licens för källkoden
 
 MIT. QuestPDF används under Community License.

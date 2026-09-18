@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeBrief — Förstå kod och hitta buggar</title>
+  <meta name="description" content="CodeBrief är en Windows-app för studenter. Klistra in kod, få översikt, pseudokod, flöde och buggar/säkerhet. Lokal analys, 20 gratis analyser.">
+  <meta name="theme-color" content="#0B0D10">
+  <link rel="icon" href="./assets/favicon.ico">
+  <link rel="apple-touch-icon" href="./assets/logo.png">
+  <meta property="og:title" content="CodeBrief — Förstå kod och hitta buggar">
+  <meta property="og:description" content="Windows-app för studenter: förstå kod, hitta fel, exportera rapport. Lokal analys utan att skicka koden.">
+  <meta property="og:image" content="./assets/logo.png">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#innehall" data-i18n="skip">Hoppa till innehållet</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">
+        <img src="./assets/logo.png" alt="" width="32" height="32">
+        <span>
+          <strong>CodeBrief</strong>
+          <small data-i18n="brand.tag">v1.0 · Windows</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Huvudmeny">
+        <a href="#sa-funkar-det" data-i18n="nav.how">Så funkar det</a>
+        <a href="#funktioner" data-i18n="nav.features">Funktioner</a>
+        <a href="#pris" data-i18n="nav.pricing">Pris</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#ladda-ner" class="nav-download" data-i18n="nav.download">Ladda ner</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="lang-sv" aria-pressed="true">SV</button>
+          <button type="button" id="lang-en" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn btn-primary btn-compact" href="#ladda-ner" data-i18n="nav.download">Ladda ner</a>
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav" data-i18n="nav.menu">Meny</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="spec-bar" aria-hidden="false">
+    <div class="wrap spec-inner">
+      <span data-i18n="spec.1">Windows 10/11 x64</span>
+      <span data-i18n="spec.2">20 gratis analyser</span>
+      <span data-i18n="spec.3">Lokal motor</span>
+      <span data-i18n="spec.4">Valfri AI-nyckel</span>
+      <span data-i18n="spec.5">CB1-licens</span>
+      <span data-i18n="spec.6">PDF-export</span>
+    </div>
+  </div>
+
+  <main id="innehall">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="dot" aria-hidden="true"></span>
+            <span data-i18n="hero.eyebrow">För studenter och nybörjare · Windows 10/11</span>
+          </p>
+          <h1>
+            <span data-i18n="hero.title.1">Förstå koden.</span>
+            <em data-i18n="hero.title.2">Hitta buggarna.</em>
+          </h1>
+          <p class="lede" data-i18n="hero.lede">CodeBrief är en skrivbordsapp som tar en kodsnutt, gissar språket och skriver en pedagogisk rapport på svenska: översikt, pseudokod, flöde, buggar/säkerhet och ett förslag på rättning.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" id="cta-download" href="#ladda-ner" data-i18n="hero.cta">Ladda ner till Windows</a>
+            <a class="btn btn-ghost" href="#sa-funkar-det" data-i18n="hero.secondary">Se hur det funkar</a>
+          </div>
+          <p class="kbd-hint">
+            <kbd>Ctrl</kbd><kbd>Enter</kbd>
+            <span data-i18n="hero.kbd">analyserar i appen</span>
+          </p>
+          <ul class="hero-points">
+            <li data-i18n="hero.p1">20 analyser gratis, sedan Pro-licens</li>
+            <li data-i18n="hero.p2">Lokal analys — koden stannar på datorn</li>
+            <li data-i18n="hero.p3">Valfri AI med din egen nyckel</li>
+          </ul>
+        </div>
+
+        <figure class="studio-window" aria-hidden="true">
+          <div class="win-accent"></div>
+          <header class="win-titlebar">
+            <img src="./assets/logo.png" alt="" width="28" height="28">
+            <div class="win-titles">
+              <div class="win-name">CodeBrief</div>
+              <div class="win-sub" data-i18n="app.subtitle">Kodanalys och pedagogiska rapporter</div>
+            </div>
+            <span class="win-pill" data-i18n="app.trial">Provperiod · 20 analyser</span>
+            <div class="win-caption" aria-hidden="true">
+              <span class="cap-min"></span>
+              <span class="cap-max"></span>
+              <span class="cap-close"></span>
+            </div>
+          </header>
+          <div class="win-toolbar">
+            <span class="tb-ghost" data-i18n="mock.license">Licens</span>
+            <span class="tb-ghost" data-i18n="mock.settings">Inställningar</span>
+            <span class="tb-ghost" data-i18n="mock.open">Öppna</span>
+            <span class="tb-sep"></span>
+            <span class="tb-ghost" data-i18n="mock.md">Markdown</span>
+            <span class="tb-ghost" data-i18n="mock.pdf">PDF</span>
+            <span class="tb-primary" data-i18n="mock.analyze">Analysera</span>
+          </div>
+          <div class="win-body">
+            <div class="win-editor">
+              <div class="win-pane-head">
+                <span data-i18n="mock.source">Källkod</span>
+                <span class="win-meta" data-i18n="mock.lines">5 rader · 98 tecken</span>
+                <span class="chip">Python · 92%</span>
+              </div>
+              <pre class="code-sample" tabindex="-1"><code><span class="ln">1</span> <span class="kw">def</span> <span class="fn">average</span>(nums):
+<span class="ln">2</span>     total = <span class="num">0</span>
+<span class="ln">3</span>     <span class="kw">for</span> n <span class="kw">in</span> nums:
+<span class="ln">4</span>         total += n
+<span class="ln">5</span>     <span class="kw">return</span> total / len(nums)</code></pre>
+            </div>
+            <div class="win-report">
+              <div class="win-pane-head">
+                <span data-i18n="mock.report">Rapport</span>
+                <span class="chip chip-accent" data-i18n="mock.complexity">Låg komplexitet</span>
+              </div>
+              <article class="mini-card">
+                <p class="mini-kicker" data-i18n="mock.lang">01 · Språk och miljö</p>
+                <p class="mini-title">Python</p>
+                <p data-i18n="mock.overview">Funktionen summerar en lista och räknar medelvärde. Komplexitet: låg.</p>
+              </article>
+              <article class="mini-card finding">
+                <p class="mini-kicker" data-i18n="mock.bugs">04 · Buggar och säkerhet</p>
+                <p class="finding-title" data-i18n="mock.bugTitle">Division med noll</p>
+                <p data-i18n="mock.bugDetail">Tom lista ger ZeroDivisionError. Kontrollera längden innan division.</p>
+              </article>
+              <article class="mini-card ok">
+                <p class="mini-kicker" data-i18n="mock.fix">06 · Korrigerad kod</p>
+                <p data-i18n="mock.fixDetail">Förslag: returnera 0 eller kasta ett tydligt fel när listan är tom.</p>
+              </article>
+            </div>
+          </div>
+          <footer class="win-status">
+            <span data-i18n="mock.status">Klar · lokal motor</span>
+            <span data-i18n="mock.remain">Provperiod · 19 analyser kvar</span>
+          </footer>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="sa-funkar-det">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="how.kicker">Tre steg</p>
+          <h2 data-i18n="how.title">Så funkar det</h2>
+          <p data-i18n="how.lede">Ingen webbtjänst att logga in på. Du installerar appen, klistrar in kod och läser rapporten till höger.</p>
+        </header>
+        <ol class="steps">
+          <li>
+            <span class="step-num">01</span>
+            <h3 data-i18n="how.1.title">Klistra in eller öppna</h3>
+            <p data-i18n="how.1.body">Klistra in källkod, släpp en fil eller öppna med Ctrl+O. CodeBrief gissar språket (C#, Python, Java, JavaScript/TypeScript, C/C++, Go, Rust med flera).</p>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <h3 data-i18n="how.2.title">Analysera</h3>
+            <p data-i18n="how.2.body">Tryck Analysera (Ctrl+Enter). Den lokala motorn kör alltid. Har du en egen OpenAI- eller Anthropic-nyckel kan du välja den i Inställningar.</p>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <h3 data-i18n="how.3.title">Läs rapporten</h3>
+            <p data-i18n="how.3.body">Sex sektioner: översikt, pseudokod, flöde, buggar/säkerhet, förbättringar och rättad kod. Exportera till Markdown eller PDF.</p>
+          </li>
+        </ol>
+
+        <ol class="report-rail" aria-label="Rapportens sektioner">
+          <li><span>01</span><strong data-i18n="rail.1">Översikt</strong></li>
+          <li><span>02</span><strong data-i18n="rail.2">Pseudokod</strong></li>
+          <li><span>03</span><strong data-i18n="rail.3">Flöde</strong></li>
+          <li><span>04</span><strong data-i18n="rail.4">Buggar</strong></li>
+          <li><span>05</span><strong data-i18n="rail.5">Förbättringar</strong></li>
+          <li><span>06</span><strong data-i18n="rail.6">Rättad kod</strong></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="funktioner">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="feat.kicker">Vad du får</p>
+          <h2 data-i18n="feat.title">En rapport som hjälper dig lära</h2>
+          <p data-i18n="feat.lede">Samma sektioner som i appen — byggda för att förklara kod, inte bara flagga fel.</p>
+        </header>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feat-num">01</span>
+            <h3 data-i18n="feat.1.title">Språk och översikt</h3>
+            <p data-i18n="feat.1.body">Offline-detektion av språk och ramverk, plus en kort sammanfattning av vad koden gör och hur komplex den är.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">02</span>
+            <h3 data-i18n="feat.2.title">Pseudokod</h3>
+            <p data-i18n="feat.2.body">Koden skrivs om i enklare steg så du kan följa logiken utan att fastna i syntax.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">03</span>
+            <h3 data-i18n="feat.3.title">Flöde</h3>
+            <p data-i18n="feat.3.body">Indata, steg och utdata — så du ser vad som kommer in, vad som händer och vad som kommer ut.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">04</span>
+            <h3 data-i18n="feat.4.title">Buggar och säkerhet</h3>
+            <p data-i18n="feat.4.body">Heuristik som letar efter vanliga fel, kantfall och säkerhetsrisker, med allvarlighetsgrad.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">05</span>
+            <h3 data-i18n="feat.5.title">Förslag på rättning</h3>
+            <p data-i18n="feat.5.body">Förklaring plus korrigerad kod när analysen tycker att något behöver ändras. Bra att jämföra med din lösning.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">06</span>
+            <h3 data-i18n="feat.6.title">Lokal analys</h3>
+            <p data-i18n="feat.6.body">Utan API-nyckel lämnar koden aldrig din dator. Fungerar offline. Syntaxfärgning i editorn ingår.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">07</span>
+            <h3 data-i18n="feat.7.title">Valfri AI</h3>
+            <p data-i18n="feat.7.body">Lägg in din egen OpenAI- eller Anthropic-nyckel. Den lagras krypterad med Windows DPAPI och skickas bara till den provider du valt — inte till någon CodeBrief-server.</p>
+          </article>
+          <article class="feature">
+            <span class="feat-num">08</span>
+            <h3 data-i18n="feat.8.title">PDF och Markdown</h3>
+            <p data-i18n="feat.8.body">Exportera rapporten till skolan, labben eller din egen anteckning. Markdown med Ctrl+S, PDF med Ctrl+Shift+P.</p>
+          </article>
+        </div>
+        <div class="lang-strip">
+          <p class="lang-label" data-i18n="feat.langs.label">Språkdetektion</p>
+          <ul class="lang-chips">
+            <li>C#</li>
+            <li>Python</li>
+            <li>C/C++</li>
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>Go</li>
+            <li>Rust</li>
+            <li>PHP</li>
+            <li>Ruby</li>
+            <li>SQL</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Kotlin</li>
+            <li>Swift</li>
+            <li>PowerShell</li>
+            <li>Bash</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="integritet">
+      <div class="wrap privacy">
+        <div>
+          <p class="eyebrow" data-i18n="privacy.kicker">Integritet</p>
+          <h2 data-i18n="privacy.title">Din kod skickas inte till oss</h2>
+          <p data-i18n="privacy.body">CodeBrief har ingen molnanalys av sig själv. Den lokala motorn kör på din PC. Väljer du AI går koden till OpenAI eller Anthropic med din nyckel. CodeBrief har ingen egen server som tar emot kod eller nycklar.</p>
+        </div>
+        <ul class="privacy-list">
+          <li data-i18n="privacy.l1">Lokal heuristik fungerar utan internet</li>
+          <li data-i18n="privacy.l2">API-nyckel krypteras för ditt Windows-konto</li>
+          <li data-i18n="privacy.l3">Ingen spårning på den här sidan</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="pris">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="price.kicker">Pris</p>
+          <h2 data-i18n="price.title">Prova först. Licens när du behöver mer.</h2>
+          <p data-i18n="price.lede">Ingen webbutik i appen. Du laddar ner, testar 20 analyser och aktiverar en Pro-nyckel under Licens när provperioden är slut.</p>
+        </header>
+        <div class="pricing">
+          <article class="price-card featured">
+            <p class="price-pill" data-i18n="price.trial.pill">Gratis</p>
+            <h3 data-i18n="price.trial.name">Provperiod</h3>
+            <p class="price-value" data-i18n="price.trial.cost">20 analyser</p>
+            <p data-i18n="price.trial.body">Gratis i appen. Varje körning räknas. Lokal analys och export ingår. Inget konto.</p>
+            <ul>
+              <li data-i18n="price.trial.l1">Alla sex rapportsektioner</li>
+              <li data-i18n="price.trial.l2">Markdown- och PDF-export</li>
+              <li data-i18n="price.trial.l3">Valfri egen AI-nyckel</li>
+            </ul>
+            <a class="btn btn-primary" href="#ladda-ner" data-i18n="price.trial.cta">Börja med att ladda ner</a>
+          </article>
+          <article class="price-card">
+            <p class="price-pill muted" data-i18n="price.pro.pill">I appen</p>
+            <h3 data-i18n="price.pro.name">Pro-licens</h3>
+            <p class="price-value"><span class="mono">CB1.</span> <span data-i18n="price.pro.cost">Nyckel i appen</span></p>
+            <p data-i18n="price.pro.body">RSA-signerad nyckel som börjar med CB1. Klistra in den under Licens. Gäller tills utgångsdatumet i nyckeln.</p>
+            <ul>
+              <li data-i18n="price.pro.l1">Analyser utan 20-gränsen</li>
+              <li data-i18n="price.pro.l2">Samma funktioner som i trial</li>
+              <li data-i18n="price.pro.l3">Ingen Stripe-checkout i appen</li>
+            </ul>
+            <a class="btn btn-ghost" href="#faq" data-i18n="price.pro.cta">Hur får jag en nyckel?</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section download" id="ladda-ner">
+      <div class="wrap download-inner">
+        <p class="eyebrow" data-i18n="dl.kicker">Version 1.0.0</p>
+        <h2 data-i18n="dl.title">Ladda ner CodeBrief för Windows</h2>
+        <p data-i18n="dl.body">Installer: CodeBrief-Setup-1.0.0.exe (64-bitars, Inno Setup). Kräver Windows 10 eller 11 x64. Ingen separat .NET-installation behövs för den publicerade .exe-filen.</p>
+        <div class="file-card">
+          <span class="file-icon" aria-hidden="true"></span>
+          <div>
+            <p class="file-name">CodeBrief-Setup-1.0.0.exe</p>
+            <p class="file-meta" data-i18n="dl.meta">Windows 10/11 x64 · Inno Setup · self-contained</p>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" id="release-link" href="https://github.com/OWNER/REPO/releases/latest" data-i18n="dl.cta">Hämta från GitHub Releases</a>
+          <a class="btn btn-ghost" id="source-link" href="https://github.com/OWNER/REPO" data-i18n="dl.source">Källkod på GitHub</a>
+        </div>
+        <p class="dl-note" id="release-note" data-i18n="dl.note">När en release är publicerad pekar knappen dit. Tills dess: bygg med scripts/publish.ps1 eller kör från källkod.</p>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="faq.kicker">Vanliga frågor</p>
+          <h2 data-i18n="faq.title">För studenter</h2>
+        </header>
+        <div class="faq">
+          <details open>
+            <summary data-i18n="faq.1.q">Skickas min kod någonstans?</summary>
+            <p data-i18n="faq.1.a">Inte med standardläget. Lokal heuristik körs på din dator. Om du klistrar in en OpenAI- eller Anthropic-nyckel under Inställningar skickas koden till den providern du valt. CodeBrief har ingen egen molnserver för analys.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.2.q">Vad händer efter 20 analyser?</summary>
+            <p data-i18n="faq.2.a">Provperioden tar slut. Appen ber dig aktivera en licensnyckel under Licens. Nyckeln börjar med CB1. och är RSA-signerad. Det finns ingen inbyggd kortbetalning.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.3.q">Finns det till Mac, Linux eller webben?</summary>
+            <p data-i18n="faq.3.a">Nej. CodeBrief 1.0 är en Windows-app (WPF) för Windows 10/11 x64. Den här sidan är bara information — analysen körs inte i webbläsaren.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.4.q">Behöver jag internet?</summary>
+            <p data-i18n="faq.4.a">Nej för lokal analys och språkdetektion. Ja om du använder OpenAI eller Anthropic.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.5.q">Hur får jag en Pro-licens?</summary>
+            <p data-i18n="faq.5.a">Utgivaren skapar en CB1.-nyckel (tools/CodeBrief.LicenseGen). Du klistrar in den i appen. Kontakta den som ger ut CodeBrief — det finns ingen automatisk webbshop i version 1.0.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.6.q">Kan jag lämna in rapporten i skolan?</summary>
+            <p data-i18n="faq.6.a">Du kan exportera till PDF eller Markdown. Använd det som hjälp att förstå koden. Följ din skolas regler för hjälpmedel och plagiering.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.7.q">Vilken licens har källkoden?</summary>
+            <p data-i18n="faq.7.a">MIT. QuestPDF i PDF-exporten används under Community License.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img src="./assets/logo.png" alt="" width="28" height="28">
+        <div>
+          <strong>CodeBrief</strong>
+          <p data-i18n="footer.tag">Windows-app för att förstå kod och hitta fel. Version 1.0.0.</p>
+        </div>
+      </div>
+      <nav aria-label="Sidfot">
+        <a id="footer-github" href="https://github.com/OWNER/REPO" data-i18n="footer.github">GitHub</a>
+        <a id="footer-license" href="https://github.com/OWNER/REPO/blob/main/LICENSE" data-i18n="footer.license">LICENSE (MIT)</a>
+        <a href="./DOMAIN.md" data-i18n="footer.domain">Egen domän</a>
+        <a href="#ladda-ner" data-i18n="footer.download">Ladda ner</a>
+      </nav>
+      <p class="copy" data-i18n="footer.copy">© 2026 CodeBrief. Inget påhittat kassasystem — licens aktiveras i appen.</p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
