@@ -51,17 +51,6 @@ Resultatet:
 - `dist/CodeBrief-Setup-1.0.0.exe` — Inno Setup-installer (om Inno Setup 6 är installerat)
 
 
-## Projektstruktur
-
-```
-src/CodeBrief.Desktop      WPF-klient
-src/CodeBrief.Core         språkdetektor, lokal analys, AI-klienter
-src/CodeBrief.Contracts    JSON-rapportmodell
-src/CodeBrief.Licensing    RSA-licens
-tools/CodeBrief.LicenseGen skapa nycklar
-tests/CodeBrief.Tests      enhetstester
-installer/                 Inno Setup
-```
 
 ## Kortkommandon
 
@@ -86,8 +75,6 @@ Marknadssajten ligger i `docs/` (statisk HTML, ingen backend).
 5. Sajten publiceras på `https://<användarnamn>.github.io/<repo>/`.
 
 Ladda ner-knappen pekar mot GitHub Releases. När du har en installer, skapa en release och lägg upp `dist/CodeBrief-Setup-1.0.0.exe`.
-
-**Egen domän:** köp den själv (Loopia, Namecheap, …). Lägg inte in en påhittad adress. Steg för DNS (CNAME `www` → `<användarnamn>.github.io`, eller A-poster för apex) och GitHub “Custom domain” + HTTPS finns i [docs/DOMAIN.md](docs/DOMAIN.md). Ingen `CNAME`-fil ska ligga i `docs/` förrän du faktiskt har en domän.
 
 ## Licens för källkoden
 
