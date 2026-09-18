@@ -74,6 +74,7 @@ installer/                 Inno Setup
 | `Ctrl+Shift+P` | Exportera PDF |
 | `Ctrl+,` | Inställningar |
 
+
 ## Website / GitHub Pages
 
 Marknadssajten ligger i `docs/` (statisk HTML, ingen backend).
