@@ -1,8 +1,9 @@
 (function () {
   "use strict";
 
-  // Fyll i när GitHub-repot finns. Tomma värden → auto från github.io, annars placeholder.
-  var GITHUB = { owner: "", repo: "" };
+  var GITHUB = { owner: "KhalilShakra", repo: "codebrief" };
+  var INSTALLER_TAG = "v1.0.0";
+  var INSTALLER_NAME = "CodeBrief-Setup-1.0.0.exe";
 
   var strings = {
     sv: {
@@ -130,10 +131,10 @@
       "dl.body":
         "Installer: CodeBrief-Setup-1.0.0.exe (64-bitars, Inno Setup). Kräver Windows 10 eller 11 x64. Ingen separat .NET-installation behövs för den publicerade .exe-filen.",
       "dl.meta": "Windows 10/11 x64 · Inno Setup · self-contained",
-      "dl.cta": "Hämta från GitHub Releases",
+      "dl.cta": "Ladda ner för Windows",
       "dl.source": "Källkod på GitHub",
       "dl.note":
-        "När en release är publicerad pekar knappen dit. Tills dess: bygg med scripts/publish.ps1 eller kör från källkod.",
+        "Filen hämtas från GitHub Release v1.0.0. Windows 10/11 x64. Inno Setup kan visa en SmartScreen-varning första gången — det är vanligt för nya appar.",
       "faq.kicker": "Vanliga frågor",
       "faq.title": "För studenter",
       "faq.1.q": "Skickas min kod någonstans?",
@@ -283,10 +284,10 @@
       "dl.body":
         "Installer: CodeBrief-Setup-1.0.0.exe (64-bit, Inno Setup). Requires Windows 10 or 11 x64. The published .exe is self-contained — no separate .NET install.",
       "dl.meta": "Windows 10/11 x64 · Inno Setup · self-contained",
-      "dl.cta": "Get it from GitHub Releases",
+      "dl.cta": "Download for Windows",
       "dl.source": "Source on GitHub",
       "dl.note":
-        "The button points at Releases once one exists. Until then: build with scripts/publish.ps1 or run from source.",
+        "The file comes from GitHub Release v1.0.0. Windows 10/11 x64. Inno Setup may show a SmartScreen warning the first time — common for new apps.",
       "faq.kicker": "FAQ",
       "faq.title": "For students",
       "faq.1.q": "Does my code leave this machine?",
@@ -323,24 +324,29 @@
   };
 
   function githubUrls() {
-    if (GITHUB.owner && GITHUB.repo) {
-      var base = "https://github.com/" + GITHUB.owner + "/" + GITHUB.repo;
-      return { repo: base, releases: base + "/releases/latest", license: base + "/blob/main/LICENSE" };
+    var owner = GITHUB.owner;
+    var repo = GITHUB.repo;
+
+    if (!owner || !repo) {
+      var host = location.hostname;
+      if (host.endsWith(".github.io")) {
+        owner = host.slice(0, -".github.io".length);
+        var parts = location.pathname.split("/").filter(Boolean);
+        repo = parts[0] || owner + ".github.io";
+      }
     }
 
-    var host = location.hostname;
-    if (host.endsWith(".github.io")) {
-      var user = host.slice(0, -".github.io".length);
-      var parts = location.pathname.split("/").filter(Boolean);
-      var repo = parts[0] || user + ".github.io";
-      var auto = "https://github.com/" + user + "/" + repo;
-      return { repo: auto, releases: auto + "/releases/latest", license: auto + "/blob/main/LICENSE" };
+    if (!owner || !repo) {
+      owner = "KhalilShakra";
+      repo = "codebrief";
     }
 
+    var base = "https://github.com/" + owner + "/" + repo;
     return {
-      repo: "https://github.com/OWNER/REPO",
-      releases: "https://github.com/OWNER/REPO/releases/latest",
-      license: "https://github.com/OWNER/REPO/blob/main/LICENSE"
+      repo: base,
+      releases: base + "/releases/latest",
+      license: base + "/blob/main/LICENSE",
+      installer: base + "/releases/download/" + INSTALLER_TAG + "/" + INSTALLER_NAME
     };
   }
 
@@ -398,12 +404,10 @@
     var source = document.getElementById("source-link");
     var footerGh = document.getElementById("footer-github");
     var footerLic = document.getElementById("footer-license");
-    var cta = document.getElementById("cta-download");
-    if (release) release.href = urls.releases;
+    if (release) release.href = urls.installer;
     if (source) source.href = urls.repo;
     if (footerGh) footerGh.href = urls.repo;
     if (footerLic) footerLic.href = urls.license;
-    if (cta && urls.releases.indexOf("OWNER/REPO") === -1) cta.href = urls.releases;
   }
 
   var stored = "sv";
