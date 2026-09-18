@@ -4,39 +4,46 @@
              xmlns:c="clr-namespace:CodeBrief.Contracts;assembly=CodeBrief.Contracts">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type c:Finding}">
-            <Border Margin="0,0,0,8" Background="#1C2330" CornerRadius="6" Padding="12">
+            <Border Margin="0,0,0,8"
+                    Background="{StaticResource PanelAltBrush}"
+                    BorderBrush="{StaticResource BorderBrushKey}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Padding="12">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="2"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" CornerRadius="2" Background="{Binding Severity, Converter={StaticResource SeverityBrush}}" Margin="0,0,10,0"/>
+                    <Border Grid.Column="0" CornerRadius="1" Background="{Binding Severity, Converter={StaticResource SeverityBrush}}" Margin="0,1,12,1"/>
                     <StackPanel Grid.Column="1">
                         <DockPanel LastChildFill="False">
                             <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="13"/>
                             <TextBlock DockPanel.Dock="Right" Text="{Binding Severity}"
                                        Foreground="{Binding Severity, Converter={StaticResource SeverityBrush}}"
-                                       FontSize="11" Margin="8,0,0,0"/>
+                                       FontFamily="{StaticResource MonoFont}"
+                                       FontSize="10" Margin="8,0,0,0" VerticalAlignment="Center"/>
                         </DockPanel>
-                        <TextBlock Text="{Binding Detail}" Style="{StaticResource BodyText}" Margin="0,4,0,0"/>
+                        <TextBlock Text="{Binding Detail}" Style="{StaticResource BodyText}" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Grid>
             </Border>
         </DataTemplate>
     </UserControl.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="4,0,12,0">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16,16,12,16">
         <StackPanel>
             <Border Style="{StaticResource SectionCard}">
                 <StackPanel>
-                    <DockPanel>
-                        <TextBlock Style="{StaticResource SectionTitle}" Text="1. Språk och miljö"/>
-                        <TextBlock DockPanel.Dock="Right"
-                                   Text="{Binding Language.Complexity, Converter={StaticResource ComplexityLabel}}"
-                                   Foreground="{StaticResource AccentBrush}" FontSize="12" VerticalAlignment="Center"/>
+                    <DockPanel LastChildFill="False" Margin="0,0,0,8">
+                        <TextBlock Style="{StaticResource SectionIndex}" Text="01 · SPRÅK OCH MILJÖ" Margin="0"/>
+                        <Border DockPanel.Dock="Right" Style="{StaticResource ChipBorder}" Background="{StaticResource AccentDimBrush}" BorderBrush="#594C8DFF">
+                            <TextBlock Text="{Binding Language.Complexity, Converter={StaticResource ComplexityLabel}}"
+                                       Foreground="{StaticResource AccentBrush}" FontSize="11"/>
+                        </Border>
                     </DockPanel>
-                    <TextBlock Text="{Binding Language.Name}" Foreground="{StaticResource TextBrush}" FontSize="20" FontWeight="SemiBold"/>
-                    <ItemsControl ItemsSource="{Binding Language.Frameworks}" Margin="0,6,0,8">
+                    <TextBlock Text="{Binding Language.Name}" Foreground="{StaticResource TextBrush}" FontSize="22" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                    <ItemsControl ItemsSource="{Binding Language.Frameworks}" Margin="0,0,0,12">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
@@ -44,7 +51,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="#243044" CornerRadius="10" Padding="8,3" Margin="0,0,6,6">
+                                <Border Style="{StaticResource ChipBorder}" Margin="0,0,6,6">
                                     <TextBlock Text="{Binding}" Foreground="{StaticResource TextBrush}" FontSize="11"/>
                                 </Border>
                             </DataTemplate>
@@ -56,13 +63,13 @@
 
             <Border Style="{StaticResource SectionCard}">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource SectionTitle}" Text="2. Pseudokod"/>
-                    <Border Background="#0B0E13" CornerRadius="6" Padding="12">
+                    <TextBlock Style="{StaticResource SectionIndex}" Text="02 · PSEUDOKOD"/>
+                    <Border Background="{StaticResource EditorBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="1" CornerRadius="4" Padding="12">
                         <ItemsControl ItemsSource="{Binding Pseudocode.Lines}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}" FontFamily="Cascadia Code, Consolas" FontSize="12.5"
-                                               Foreground="#C9D1D9" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding}" FontFamily="{StaticResource MonoFont}" FontSize="12.5"
+                                               Foreground="{StaticResource CodeBrush}" TextWrapping="Wrap" Margin="0,0,0,2"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
@@ -72,28 +79,40 @@
 
             <Border Style="{StaticResource SectionCard}">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource SectionTitle}" Text="3. Kodflöde"/>
-                    <TextBlock Text="Indata" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,4"/>
-                    <ItemsControl ItemsSource="{Binding Flow.Inputs}" Margin="0,0,0,10">
+                    <TextBlock Style="{StaticResource SectionIndex}" Text="03 · KODFLÖDE"/>
+
+                    <TextBlock Text="Indata" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
+                    <ItemsControl ItemsSource="{Binding Flow.Inputs}" Margin="0,0,0,16">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Style="{StaticResource BodyText}" Margin="0,0,0,4" Text="{Binding}"/>
+                                <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                                    <Border Width="2" Background="{StaticResource AccentBrush}" CornerRadius="1" Margin="0,3,10,3"/>
+                                    <TextBlock Style="{StaticResource BodyText}" Text="{Binding}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <TextBlock Text="Steg" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,4"/>
-                    <ItemsControl ItemsSource="{Binding Flow.Steps}" Margin="0,0,0,10">
+
+                    <TextBlock Text="Steg" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
+                    <ItemsControl ItemsSource="{Binding Flow.Steps}" Margin="0,0,0,16">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Style="{StaticResource BodyText}" Margin="0,0,0,4" Text="{Binding}"/>
+                                <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                                    <Border Width="2" Background="{StaticResource AccentBrush}" CornerRadius="1" Margin="0,3,10,3"/>
+                                    <TextBlock Style="{StaticResource BodyText}" Text="{Binding}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <TextBlock Text="Utdata" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,4"/>
+
+                    <TextBlock Text="Utdata" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
                     <ItemsControl ItemsSource="{Binding Flow.Outputs}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Style="{StaticResource BodyText}" Margin="0,0,0,4" Text="{Binding}"/>
+                                <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                                    <Border Width="2" Background="{StaticResource AccentBrush}" CornerRadius="1" Margin="0,3,10,3"/>
+                                    <TextBlock Style="{StaticResource BodyText}" Text="{Binding}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -102,26 +121,26 @@
 
             <Border Style="{StaticResource SectionCard}">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource SectionTitle}" Text="4. Buggar, fel och säkerhet"/>
-                    <Border Background="#10251C" CornerRadius="6" Padding="10" Margin="0,0,0,10"
+                    <TextBlock Style="{StaticResource SectionIndex}" Text="04 · BUGGAR, FEL OCH SÄKERHET"/>
+                    <Border Background="#10251C" BorderBrush="#243DDC97" BorderThickness="1" CornerRadius="4" Padding="12" Margin="0,0,0,16"
                             Visibility="{Binding Issues.IsCorrect, Converter={StaticResource BoolToVis}}">
                         <TextBlock Text="Koden ser korrekt ut enligt den lokala analysen. Inga kritiska fel flaggades."
-                                   Foreground="{StaticResource OkBrush}" TextWrapping="Wrap"/>
+                                   Foreground="{StaticResource OkBrush}" TextWrapping="Wrap" FontSize="13"/>
                     </Border>
 
-                    <TextBlock Text="Buggar" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,6"/>
-                    <TextBlock Text="Inga buggar hittades." Style="{StaticResource BodyText}" Margin="0,0,0,8"
+                    <TextBlock Text="Buggar" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
+                    <TextBlock Text="Inga buggar hittades." Style="{StaticResource BodyText}" Margin="0,0,0,16"
                                Visibility="{Binding Issues.Bugs.Count, Converter={StaticResource ZeroToVis}}"/>
-                    <ItemsControl ItemsSource="{Binding Issues.Bugs}" Margin="0,0,0,10"
+                    <ItemsControl ItemsSource="{Binding Issues.Bugs}" Margin="0,0,0,16"
                                   Visibility="{Binding Issues.Bugs.Count, Converter={StaticResource CountToVis}}"/>
 
-                    <TextBlock Text="Kantfall" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,6"/>
-                    <TextBlock Text="Inga kantfall flaggades." Style="{StaticResource BodyText}" Margin="0,0,0,8"
+                    <TextBlock Text="Kantfall" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
+                    <TextBlock Text="Inga kantfall flaggades." Style="{StaticResource BodyText}" Margin="0,0,0,16"
                                Visibility="{Binding Issues.EdgeCases.Count, Converter={StaticResource ZeroToVis}}"/>
-                    <ItemsControl ItemsSource="{Binding Issues.EdgeCases}" Margin="0,0,0,10"
+                    <ItemsControl ItemsSource="{Binding Issues.EdgeCases}" Margin="0,0,0,16"
                                   Visibility="{Binding Issues.EdgeCases.Count, Converter={StaticResource CountToVis}}"/>
 
-                    <TextBlock Text="Säkerhet" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                    <TextBlock Text="Säkerhet" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
                     <TextBlock Text="Inga säkerhetsrisker flaggades." Style="{StaticResource BodyText}"
                                Visibility="{Binding Issues.Security.Count, Converter={StaticResource ZeroToVis}}"/>
                     <ItemsControl ItemsSource="{Binding Issues.Security}"
@@ -131,41 +150,49 @@
 
             <Border Style="{StaticResource SectionCard}">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource SectionTitle}" Text="5. Prestanda och best practices"/>
-                    <TextBlock Text="Prestanda" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,4"/>
-                    <ItemsControl ItemsSource="{Binding Improvements.Performance}" Margin="0,0,0,10">
+                    <TextBlock Style="{StaticResource SectionIndex}" Text="05 · PRESTANDA OCH BEST PRACTICES"/>
+                    <TextBlock Text="Prestanda" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
+                    <ItemsControl ItemsSource="{Binding Improvements.Performance}" Margin="0,0,0,16">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Style="{StaticResource BodyText}" Margin="0,0,0,4" Text="{Binding}"/>
+                                <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                                    <Border Width="2" Background="{StaticResource AccentBrush}" CornerRadius="1" Margin="0,3,10,3"/>
+                                    <TextBlock Style="{StaticResource BodyText}" Text="{Binding}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <TextBlock Text="Underhåll" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                    <TextBlock Text="Underhåll" Foreground="{StaticResource TextBrush}" FontWeight="SemiBold" FontSize="12" Margin="0,0,0,8"/>
                     <ItemsControl ItemsSource="{Binding Improvements.Maintainability}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Style="{StaticResource BodyText}" Margin="0,0,0,4" Text="{Binding}"/>
+                                <DockPanel Margin="0,0,0,8" LastChildFill="True">
+                                    <Border Width="2" Background="{StaticResource AccentBrush}" CornerRadius="1" Margin="0,3,10,3"/>
+                                    <TextBlock Style="{StaticResource BodyText}" Text="{Binding}"/>
+                                </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </StackPanel>
             </Border>
 
-            <Border Style="{StaticResource SectionCard}">
+            <Border Style="{StaticResource SectionCard}" Margin="0">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource SectionTitle}" Text="6. Korrigerad kod"/>
-                    <TextBlock Text="{Binding Fix.Explanation}" Style="{StaticResource BodyText}" Margin="0,0,0,8"/>
-                    <Border Background="#0B0E13" CornerRadius="6" Padding="12"
+                    <TextBlock Style="{StaticResource SectionIndex}" Text="06 · KORRIGERAD KOD"/>
+                    <TextBlock Text="{Binding Fix.Explanation}" Style="{StaticResource BodyText}" Margin="0,0,0,12"/>
+                    <Border Background="{StaticResource EditorBrush}" BorderBrush="{StaticResource BorderBrushKey}" BorderThickness="1" CornerRadius="4" Padding="12"
                             Visibility="{Binding Fix.CorrectedCode, Converter={StaticResource NullToVis}}">
                         <TextBox Text="{Binding Fix.CorrectedCode, Mode=OneWay}"
                                  IsReadOnly="True"
                                  TextWrapping="NoWrap"
                                  AcceptsReturn="True"
-                                 FontFamily="Cascadia Code, Consolas"
+                                 FontFamily="{StaticResource MonoFont}"
                                  FontSize="12.5"
-                                 Foreground="#C9D1D9"
+                                 Foreground="{StaticResource CodeBrush}"
                                  Background="Transparent"
                                  BorderThickness="0"
+                                 Padding="0"
+                                 MinHeight="0"
                                  VerticalScrollBarVisibility="Auto"
                                  HorizontalScrollBarVisibility="Auto"
                                  MaxHeight="280"/>
